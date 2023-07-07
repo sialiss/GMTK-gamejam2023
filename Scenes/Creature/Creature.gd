@@ -12,6 +12,9 @@ func _physics_process(delta):
 	constant_force = input * force
 	
 
-	var angle = Vector2.UP.rotated(global_rotation).angle_to(input)
-	constant_torque = angle * torque
+	if input == Vector2.ZERO:
+		constant_torque = 0
+	else:
+		var angle = Vector2.UP.rotated(global_rotation).angle_to(input)
+		constant_torque = angle * torque
 
