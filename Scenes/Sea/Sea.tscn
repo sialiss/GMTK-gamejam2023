@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=6 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
+[ext_resource type="PackedScene" uid="uid://c27ik08huxew1" path="res://Scenes/Enemies/Fish/FishSpawn.tscn" id="3_m44fu"]
+
+[sub_resource type="GDScript" id="GDScript_laj1i"]
+script/source = "extends Node2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h6fe1"]
 
-[sub_resource type="Curve2D" id="Curve2D_w1w0k"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 483, 91, 0, 0, 0, 0, 483, 294, 0, 0, 0, 0, 781, 295, 0, 0, 0, 0, 781, 90, 0, 0, 0, 0, 484, 91)
-}
-point_count = 5
-
 [node name="Sea" type="Node2D"]
+script = SubResource("GDScript_laj1i")
 
 [node name="Creature" parent="." instance=ExtResource("1_2i86a")]
-position = Vector2(239, 30)
+position = Vector2(297, 109)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 329)
@@ -22,12 +31,8 @@ position = Vector2(0, 329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_h6fe1")
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_w1w0k")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(483, 91)
-rotation = 1.5708
-
 [node name="Base" parent="." instance=ExtResource("2_ebr7j")]
 position = Vector2(128, 304)
+
+[node name="FishSpawn" parent="." instance=ExtResource("3_m44fu")]
+position = Vector2(376, 111)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c27ik08huxew1"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Fish/FishSpawn.gd" id="1_7lq7t"]
+
+[sub_resource type="Curve2D" id="Curve2D_3eh5s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 483, 91, 0, 0, 0, 0, 483, 294, 0, 0, 0, 0, 781, 295, 0, 0, 0, 0, 781, 90, 0, 0, 0, 0, 484, 91)
+}
+point_count = 5
+
+[node name="FishSpawn" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_7lq7t")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-484, -93)
+curve = SubResource("Curve2D_3eh5s")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(483, 91)
+rotation = 1.5708
+
+[node name="FishTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]
