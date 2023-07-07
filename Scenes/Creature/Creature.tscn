@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c531hmqy1ihyj"]
 
 [ext_resource type="Script" path="res://Scenes/Creature/Creature.gd" id="1_qejp8"]
-[ext_resource type="Texture2D" uid="uid://b3jcc0xfviupi" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
+[ext_resource type="Texture2D" uid="uid://duhb0j6w1eqhs" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4on5"]
 height = 38.0
