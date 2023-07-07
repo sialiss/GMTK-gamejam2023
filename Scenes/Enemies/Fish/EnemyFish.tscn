@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://3pi360uwaxyl"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Fish/EnemyFish.gd" id="1_0b6co"]
+[ext_resource type="Texture2D" uid="uid://b4n1ypdoxnrkj" path="res://icon.svg" id="2_07ca7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kawjv"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_0b6co")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kawjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_07ca7")
