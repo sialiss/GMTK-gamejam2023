@@ -1,22 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=3 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
-[ext_resource type="Script" path="res://Scenes/Room/Room.gd" id="2_tmr6r"]
-[ext_resource type="Script" path="res://Scenes/Room/Wall.gd" id="3_13dly"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h6fe1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2eajt"]
-size = Vector2(80, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2rs7"]
-size = Vector2(80, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n74f"]
-size = Vector2(8, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbwkc"]
-size = Vector2(80, 8)
 
 [node name="Sea" type="Node2D"]
 
@@ -28,78 +14,3 @@ position = Vector2(0, 329)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_h6fe1")
-
-[node name="Building" type="Node2D" parent="."]
-position = Vector2(56, 272)
-
-[node name="Room" type="Area2D" parent="Building"]
-script = ExtResource("2_tmr6r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Room"]
-shape = SubResource("RectangleShape2D_2eajt")
-
-[node name="Room2" type="Area2D" parent="Building"]
-position = Vector2(88, 0)
-script = ExtResource("2_tmr6r")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Building/Room2"]
-shape = SubResource("RectangleShape2D_e2rs7")
-
-[node name="Wall3" type="StaticBody2D" parent="Building" node_paths=PackedStringArray("connected_rooms")]
-position = Vector2(-48, 0)
-script = ExtResource("3_13dly")
-exterior = true
-connected_rooms = [NodePath("../Room")]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Wall3"]
-position = Vector2(4, 0)
-shape = SubResource("RectangleShape2D_7n74f")
-debug_color = Color(0, 0.643137, 0.329412, 0.419608)
-
-[node name="Wall4" type="StaticBody2D" parent="Building" node_paths=PackedStringArray("connected_rooms")]
-position = Vector2(-40, -64)
-script = ExtResource("3_13dly")
-exterior = true
-connected_rooms = [NodePath("../Room")]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Wall4"]
-position = Vector2(40, 4)
-shape = SubResource("RectangleShape2D_hbwkc")
-debug_color = Color(0, 0.643137, 0.329412, 0.419608)
-
-[node name="Wall" type="StaticBody2D" parent="Building" node_paths=PackedStringArray("connected_rooms")]
-position = Vector2(40, 0)
-script = ExtResource("3_13dly")
-connected_rooms = [NodePath("../Room"), NodePath("../Room2")]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Wall"]
-position = Vector2(4, 0)
-shape = SubResource("RectangleShape2D_7n74f")
-debug_color = Color(0, 0.643137, 0.329412, 0.419608)
-
-[node name="Wall2" type="StaticBody2D" parent="Building" node_paths=PackedStringArray("connected_rooms")]
-position = Vector2(128, 0)
-script = ExtResource("3_13dly")
-exterior = true
-connected_rooms = [NodePath("../Room2")]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Wall2"]
-position = Vector2(4, 0)
-shape = SubResource("RectangleShape2D_7n74f")
-debug_color = Color(0, 0.643137, 0.329412, 0.419608)
-
-[node name="Wall5" type="StaticBody2D" parent="Building" node_paths=PackedStringArray("connected_rooms")]
-position = Vector2(48, -64)
-script = ExtResource("3_13dly")
-exterior = true
-connected_rooms = [NodePath("../Room2")]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Building/Wall5"]
-position = Vector2(40, 4)
-shape = SubResource("RectangleShape2D_hbwkc")
-debug_color = Color(0, 0.643137, 0.329412, 0.419608)
