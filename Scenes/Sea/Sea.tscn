@@ -1,8 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=5 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
+[ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h6fe1"]
+
+[sub_resource type="Curve2D" id="Curve2D_w1w0k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 483, 91, 0, 0, 0, 0, 483, 294, 0, 0, 0, 0, 781, 295, 0, 0, 0, 0, 781, 90, 0, 0, 0, 0, 484, 91)
+}
+point_count = 5
 
 [node name="Sea" type="Node2D"]
 
@@ -14,3 +21,13 @@ position = Vector2(0, 329)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_h6fe1")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_w1w0k")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(483, 91)
+rotation = 1.5708
+
+[node name="Base" parent="." instance=ExtResource("2_ebr7j")]
+position = Vector2(128, 304)
