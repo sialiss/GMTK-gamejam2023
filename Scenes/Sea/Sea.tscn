@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
-[ext_resource type="PackedScene" uid="uid://c27ik08huxew1" path="res://Scenes/Enemies/Fish/FishSpawn.tscn" id="3_m44fu"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Fish/FishSpawn.tscn" id="3_m44fu"]
 
 [sub_resource type="GDScript" id="GDScript_laj1i"]
 script/source = "extends Node2D
@@ -32,7 +32,7 @@ position = Vector2(0, 329)
 shape = SubResource("WorldBoundaryShape2D_h6fe1")
 
 [node name="Base" parent="." instance=ExtResource("2_ebr7j")]
-position = Vector2(128, 304)
+position = Vector2(128, 284)
 
 [node name="FishSpawn" parent="." instance=ExtResource("3_m44fu")]
 position = Vector2(370, 86)

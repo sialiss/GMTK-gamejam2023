@@ -1,34 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://djqqcw56r6tas"]
 
-[ext_resource type="Texture2D" uid="uid://b4n1ypdoxnrkj" path="res://icon.svg" id="1_t712b"]
+[ext_resource type="Texture2D" uid="uid://b4t7r4cb73kug" path="res://Assets/Textures/HumanEnemies/Boss/Base1.png" id="1_lqlx6"]
+[ext_resource type="PackedScene" uid="uid://taye5sbg7llp" path="res://Scenes/Enemies/Gun/Gun.tscn" id="2_4nkme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15m07"]
-size = Vector2(48, 48)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bwy8e"]
-radius = 8.0
+size = Vector2(79, 74)
 
 [node name="Base" type="Node2D"]
+texture_filter = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
+[node name="Base1" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_lqlx6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_15m07")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(0, -1.43051e-06)
-scale = Vector2(0.375, 0.375)
-texture = ExtResource("1_t712b")
+[node name="Gun" parent="." instance=ExtResource("2_4nkme")]
+speed_degrees = 90.0
+predictive = true
 
-[node name="Gun" type="Node2D" parent="."]
+[node name="Gun2" parent="." instance=ExtResource("2_4nkme")]
+position = Vector2(-48.5, 14)
+max_angle_degrees = -90.0
+speed_degrees = 90.0
+predictive = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Gun"]
-position = Vector2(0, -24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun/StaticBody2D"]
-shape = SubResource("CircleShape2D_bwy8e")
-
-[node name="Icon2" type="Sprite2D" parent="Gun/StaticBody2D"]
-position = Vector2(0, -8)
-scale = Vector2(0.0625, 0.125)
-texture = ExtResource("1_t712b")
+[node name="Gun3" parent="." instance=ExtResource("2_4nkme")]
+position = Vector2(48.5, -20)
+min_angle_degrees = -90.0
+speed_degrees = 90.0
+predictive = true
