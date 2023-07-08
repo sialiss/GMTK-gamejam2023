@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c531hmqy1ihyj"]
+[gd_scene load_steps=7 format=3 uid="uid://c531hmqy1ihyj"]
 
 [ext_resource type="Script" path="res://Scenes/Creature/Creature.gd" id="1_qejp8"]
 [ext_resource type="Texture2D" uid="uid://l6ce3y60hocx" path="res://Assets/Textures/Player/tentacle_body.png" id="2_8ywxa"]
 [ext_resource type="Texture2D" uid="uid://b3jcc0xfviupi" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
-[ext_resource type="PackedScene" uid="uid://b4a8guppeaucg" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
+[ext_resource type="PackedScene" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4on5"]
 radius = 12.0
 height = 40.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m1wdp"]
+polygon = PackedVector2Array(3, -9, 7, -9, 7, -8, 8, -8, 8, -7, 26, -7, 26, -6, 25, -6, 25, -5, 23, -5, 23, -4, 17, -4, 17, -3, 14, -3, 14, -2, 15, -2, 15, -1, 16, -1, 16, 0, 17, 0, 17, 2, 18, 2, 18, 4, 17, 4, 17, 5, 15, 5, 15, 6, 13, 6, 13, 5, 12, 5, 12, 4, 11, 4, 11, 3, 10, 3, 10, 7, 9, 7, 9, 8, 7, 8, 7, 9, 5, 9, 5, 10, 2, 10, 2, 9, 4, 9, 4, 8, 2, 8, 2, 7, 3, 7, 3, 6, 1, 6, 1, 7, -1, 7, -1, 6, -3, 6, -3, 7, -2, 7, -2, 8, -4, 8, -4, 9, -2, 9, -2, 10, -5, 10, -5, 9, -7, 9, -7, 8, -9, 8, -9, 7, -10, 7, -10, 3, -11, 3, -11, 4, -12, 4, -12, 5, -13, 5, -13, 6, -15, 6, -15, 5, -17, 5, -17, 4, -18, 4, -18, 2, -17, 2, -17, 0, -16, 0, -16, -1, -15, -1, -15, -2, -14, -2, -14, -3, -17, -3, -17, -4, -23, -4, -23, -5, -25, -5, -25, -6, -26, -6, -26, -7, -8, -7, -8, -8, -7, -8, -7, -9, -3, -9, -3, -10, 3, -10)
 
 [node name="Creature" type="CharacterBody2D"]
 texture_filter = 1
@@ -68,5 +71,8 @@ texture_mode = 1
 
 [node name="Headsquid" type="Sprite2D" parent="."]
 texture = ExtResource("2_joybx")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_m1wdp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
