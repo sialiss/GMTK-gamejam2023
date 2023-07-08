@@ -22,10 +22,11 @@ func _process(delta):
 	pass
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+	#queue_free()
+	pass
 
 func die():
 	$CollisionShape2D.set_deferred("disabled", true)
-	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
-	tween.tween_callback(Callable(self, "queue_free"))
+	#var tween = create_tween()
+	#tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	#tween.tween_callback(Callable(self, "queue_free"))

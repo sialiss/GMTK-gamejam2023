@@ -35,4 +35,4 @@ shape = SubResource("WorldBoundaryShape2D_h6fe1")
 position = Vector2(128, 304)
 
 [node name="FishSpawn" parent="." instance=ExtResource("3_m44fu")]
-position = Vector2(376, 111)
+position = Vector2(370, 86)

@@ -1,11 +1,10 @@
 extends Node2D
 
-var fish = load("res://Scenes/Enemies/Fish/EnemyFish.tscn")
+var fish = preload("res://Scenes/Enemies/Fish/EnemyFish.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$FishTimer.start()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,7 +18,7 @@ func _on_FishTimer_timeout():
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("Path2D/PathFollow2D")
 	mob_spawn_location.set_progress_ratio(randf_range(0, 1))
-	
+
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
