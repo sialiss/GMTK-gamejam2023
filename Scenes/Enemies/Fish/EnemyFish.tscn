@@ -28,6 +28,7 @@ _data = {
 }
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 16
 gravity_scale = 0.0
 script = ExtResource("1_0b6co")
 
