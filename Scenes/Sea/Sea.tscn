@@ -226,8 +226,8 @@ libraries = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
-position = Vector2(563.645, 62.1311)
-rotation = 0.0541681
+position = Vector2(563.645, 62.131)
+rotation = 0.0541679
 progress = 584.705
 
 [node name="FishSpawn" parent="SpawnPath/PathFollow2D" node_paths=PackedStringArray("spawn_to_node") instance=ExtResource("3_m44fu")]
