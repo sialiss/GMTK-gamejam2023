@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://lia64bjrnn4p"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Submarine/Submarine.gd" id="1_jdn3m"]
+[ext_resource type="Texture2D" uid="uid://y8c2d2u7drlp" path="res://Assets/Textures/HumanEnemies/Boss/Submarine.png" id="1_sk1ul"]
+[ext_resource type="PackedScene" uid="uid://taye5sbg7llp" path="res://Scenes/Enemies/Gun/Gun.tscn" id="2_ctf7w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cy414"]
+radius = 15.0
+height = 186.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bkyo3"]
+height = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uavnv"]
+size = Vector2(294, 134)
+
+[node name="Submarine" type="CharacterBody2D"]
+texture_filter = 1
+collision_mask = 257
+motion_mode = 1
+script = ExtResource("1_jdn3m")
+speed = 200.0
+
+[node name="Submarine" type="Sprite2D" parent="."]
+texture = ExtResource("1_sk1ul")
+
+[node name="Gun" parent="." instance=ExtResource("2_ctf7w")]
+position = Vector2(-25, -28)
+
+[node name="Gun2" parent="." instance=ExtResource("2_ctf7w")]
+position = Vector2(1, -28)
+
+[node name="Gun3" parent="." instance=ExtResource("2_ctf7w")]
+position = Vector2(76, -15)
+min_angle_degrees = -155.0
+
+[node name="Gun4" parent="." instance=ExtResource("2_ctf7w")]
+position = Vector2(-66, 24)
+rotation = 1.5708
+min_angle_degrees = 0.0
+max_angle_degrees = 180.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 4)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_cy414")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-11, -13)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_bkyo3")
+
+[node name="CreaturePosition" type="Node2D" parent="."]
+position = Vector2(75, -139)
+
+[node name="AreaUnder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaUnder"]
+position = Vector2(-24, 84)
+shape = SubResource("RectangleShape2D_uavnv")
+
+[node name="CreaturePositionUnder" type="Node2D" parent="AreaUnder"]
+position = Vector2(224, 84)

@@ -1,23 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://3pi360uwaxyl"]
+[gd_scene load_steps=8 format=3 uid="uid://3pi360uwaxyl"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Fish/EnemyFish.gd" id="1_0b6co"]
-[ext_resource type="Texture2D" uid="uid://ddoompse4d7on" path="res://Assets/Textures/Temporary/24a703e76f28bb33cacfaf8c280084ee.png" id="2_017si"]
+[ext_resource type="Texture2D" uid="uid://djkfsslux61eo" path="res://Assets/Textures/XenoLife/fish1.png" id="2_vq4ho"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p3m6"]
-radius = 11.0
-height = 38.0
+radius = 7.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_imk58"]
+resource_name = "swim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6k3j"]
+_data = {
+"swim": SubResource("Animation_imk58")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ma4vj"]
+polygon = PackedVector2Array(0, -5, 1, -5, 1, -4, 2, -4, 2, -2, 1, -2, 1, -1, 0, -1, 0, 0, -5, 0, -5, -1, -7, -1, -7, -2, -8, -2, -8, -1, -10, -1, -10, -2, -9, -2, -9, -4, -10, -4, -10, -5, -8, -5, -8, -4, -7, -4, -7, -5, -5, -5, -5, -6, 0, -6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwmdd"]
+radius = 119.004
 
 [node name="RigidBody2D" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 16
+collision_mask = 273
 gravity_scale = 0.0
 script = ExtResource("1_0b6co")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7p3m6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-rotation = 0.780465
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_017si")
+texture = ExtResource("2_vq4ho")
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swim"
+libraries = {
+"": SubResource("AnimationLibrary_m6k3j")
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(4.5, 3)
+occluder = SubResource("OccluderPolygon2D_ma4vj")
+
+[node name="PositionNotifier" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionNotifier"]
+shape = SubResource("CircleShape2D_wwmdd")
