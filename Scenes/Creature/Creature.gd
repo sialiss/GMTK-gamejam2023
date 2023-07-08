@@ -22,14 +22,6 @@ func _physics_process(delta):
 	# velocity = velocity.lerp(Vector2.ZERO, 1*delta)
 	move_and_slide()
 
-	# Damage
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		print("Collided with: ", collider.name)
-		if collider.has_method("get_damage"):
-			receive_damage(collider)
-
 	# Tentacles
 	for tentacle in tentacles:
 		var tentacle_segments = tentacle.get_point_count()

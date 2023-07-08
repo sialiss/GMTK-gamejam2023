@@ -9,7 +9,6 @@ radius = 15.0
 height = 186.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bkyo3"]
-radius = 10.0
 height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uavnv"]
