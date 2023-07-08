@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://3pi360uwaxyl"]
+[gd_scene load_steps=7 format=3 uid="uid://3pi360uwaxyl"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Fish/EnemyFish.gd" id="1_0b6co"]
 [ext_resource type="Texture2D" uid="uid://cyte316owwhe3" path="res://Assets/Textures/XenoLife/fish1.png" id="2_vq4ho"]
@@ -28,7 +28,11 @@ _data = {
 "swim": SubResource("Animation_imk58")
 }
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ma4vj"]
+polygon = PackedVector2Array(0, -5, 1, -5, 1, -4, 2, -4, 2, -2, 1, -2, 1, -1, 0, -1, 0, 0, -5, 0, -5, -1, -7, -1, -7, -2, -8, -2, -8, -1, -10, -1, -10, -2, -9, -2, -9, -4, -10, -4, -10, -5, -8, -5, -8, -4, -7, -4, -7, -5, -5, -5, -5, -6, 0, -6)
+
 [node name="RigidBody2D" type="RigidBody2D"]
+texture_filter = 1
 collision_layer = 16
 gravity_scale = 0.0
 script = ExtResource("1_0b6co")
@@ -48,3 +52,7 @@ autoplay = "swim"
 libraries = {
 "": SubResource("AnimationLibrary_m6k3j")
 }
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(4.5, 3)
+occluder = SubResource("OccluderPolygon2D_ma4vj")
