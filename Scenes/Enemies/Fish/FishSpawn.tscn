@@ -32,6 +32,7 @@ rotation = 1.5708
 unique_name_in_owner = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_left = 2.0
 offset_top = -1.0
 offset_right = 302.0

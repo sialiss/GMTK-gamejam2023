@@ -6,10 +6,11 @@ extends Enemy
 
 var targetPlayer
 var targetHome
+var spawner_node: FishSpawn
 
 func _ready():
-	targetPlayer = get_parent().get_parent().get_node_or_null("Creature")
-	targetHome = get_parent().get_node_or_null("FishHome")
+	targetPlayer = Sea.sea.get_node_or_null("Creature")
+	targetHome = spawner_node.get_node_or_null("FishHome")
 
 func set_location(location: Node2D):
 	# Set the mob's direction perpendicular to the path direction.
@@ -26,12 +27,17 @@ func set_location(location: Node2D):
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	linear_velocity = velocity.rotated(direction)
 
+
+func set_spawn(spawner_node: FishSpawn):
+	self.spawner_node = spawner_node
+
+
 func _physics_process(delta):
 	var target_position
 	var input
 	if PositionNotifier.has_overlapping_bodies():
 		# игрок в области видимости рыбки
-		target_position = get_parent().get_parent().get_node_or_null("Creature")
+		target_position = Sea.sea.get_node_or_null("Creature")
 		input = target_position.global_position.direction_to(global_position)
 	else:
 		# игрока рядом нет, рыбка плывёт домой
