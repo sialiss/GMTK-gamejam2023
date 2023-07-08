@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c27ik08huxew1"]
+[gd_scene load_steps=6 format=3 uid="uid://c27ik08huxew1"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Fish/FishSpawn.gd" id="1_7lq7t"]
 
@@ -14,6 +14,9 @@ colors = PackedColorArray(0.0431373, 0.517647, 0.607843, 1, 0.617255, 0.807059, 
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_30r0s"]
 gradient = SubResource("Gradient_s7hmj")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fm48w"]
+radius = 184.614
 
 [node name="FishSpawn" type="Node2D"]
 y_sort_enabled = true
@@ -34,5 +37,13 @@ offset_top = -1.0
 offset_right = 302.0
 offset_bottom = 199.0
 texture = SubResource("GradientTexture1D_30r0s")
+
+[node name="FishHome" type="Area2D" parent="."]
+position = Vector2(149, 100)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishHome"]
+shape = SubResource("CircleShape2D_fm48w")
 
 [connection signal="timeout" from="FishTimer" to="." method="_on_FishTimer_timeout"]

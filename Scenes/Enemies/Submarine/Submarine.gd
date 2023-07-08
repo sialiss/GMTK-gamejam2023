@@ -23,7 +23,7 @@ func _physics_process(delta):
 		target_creature_position = creature_position_under
 
 	var input = target_creature_position.global_position.direction_to(target.global_position)
-	
+
 	# Move
 	velocity = velocity.move_toward(input * speed, acceleration * delta)
 	move_and_slide()
