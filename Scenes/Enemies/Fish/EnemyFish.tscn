@@ -4,17 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ddoompse4d7on" path="res://Assets/Textures/Temporary/24a703e76f28bb33cacfaf8c280084ee.png" id="2_017si"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p3m6"]
-radius = 113.0
-height = 398.0
+radius = 11.0
+height = 38.0
 
 [node name="RigidBody2D" type="RigidBody2D"]
 script = ExtResource("1_0b6co")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -14)
+position = Vector2(-1, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7p3m6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 rotation = 0.780465
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_017si")

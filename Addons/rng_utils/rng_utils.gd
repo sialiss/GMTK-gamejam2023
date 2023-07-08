@@ -7,7 +7,7 @@ var global_rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func int_range(from: int, to: int, rng: RandomNumberGenerator = global_rng) -> int:
 	if from == to:
 		return from
-	
+
 	return rng.randi_range(from, to)
 
 # 浮點數範圍隨機(from ~ to)
@@ -15,7 +15,7 @@ func int_range(from: int, to: int, rng: RandomNumberGenerator = global_rng) -> i
 func float_range(from: float, to: float, rng: RandomNumberGenerator = global_rng) -> float:
 	if from == to:
 		return from
-	
+
 	rng.randomize()
 	return rng.randf_range(from, to)
 
@@ -23,10 +23,10 @@ func float_range(from: float, to: float, rng: RandomNumberGenerator = global_rng
 # Returns one or multiple random items from an array
 func array(array: Array, num: int = 1, unique: bool = false, rng: RandomNumberGenerator = global_rng) -> Array:
 	assert(num >= 1, "[RngUtils] ERROR: num >= 1")
-	
+
 	if unique:
 		assert(num <= array.size(), "[RandUtils] ERROR: num <= array.size()")
-	
+
 	if array.size() == 1:
 		return [array[0]]
 	elif num == 1:
@@ -53,10 +53,10 @@ func array(array: Array, num: int = 1, unique: bool = false, rng: RandomNumberGe
 # Returns one or multiple random items from an array with weighted
 func array_with_weighted(weights: Array[Dictionary], num: int = 1, unique: bool = false, rng: RandomNumberGenerator = global_rng) -> Array[Dictionary]:
 	assert(num >= 1, "[RngUtils] ERROR: num >= 1")
-	
+
 	if unique:
 		assert(num <= weights.size(), "[RandUtils] ERROR: num <= weights.size()")
-	
+
 	if weights.size() == 1:
 		return [weights[0]]
 	else:
@@ -84,10 +84,10 @@ func _weights_to_weights_acc(weights: Array[Dictionary]) -> Array[float]:
 	for i in weights_acc.size():
 		weights_sum += float(weights[i].get("weight", 0.0))
 		weights_acc[i] = weights_sum
-	
+
 	return weights_acc
 
 # 權重大到小
-# Sorting weight in descending order 
+# Sorting weight in descending order
 func sort_weights(a: Dictionary, b: Dictionary):
 	return a.get("weight", 0.0) > b.get("weight", 0.0)
