@@ -1,15 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://c531hmqy1ihyj"]
 
 [ext_resource type="Script" path="res://Scenes/Creature/Creature.gd" id="1_qejp8"]
+[ext_resource type="Texture2D" uid="uid://l6ce3y60hocx" path="res://Assets/Textures/Player/tentacle_body.png" id="2_8ywxa"]
 [ext_resource type="Texture2D" uid="uid://b3jcc0xfviupi" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
 [ext_resource type="PackedScene" uid="uid://b4a8guppeaucg" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4on5"]
 radius = 12.0
 height = 40.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qxwdl"]
-polygon = PackedVector2Array(3, -10, 7, -10, 7, -9, 8, -9, 8, -8, 28, -8, 28, -7, 27, -7, 27, -6, 26, -6, 26, -5, 25, -5, 25, -4, 23, -4, 23, -3, 17, -3, 17, -2, 16, -2, 16, -1, 17, -1, 17, 0, 18, 0, 18, 2, 19, 2, 19, 4, 18, 4, 18, 5, 17, 5, 17, 6, 15, 6, 15, 7, 13, 7, 13, 6, 12, 6, 12, 5, 11, 5, 11, 7, 10, 7, 10, 8, 9, 8, 9, 9, 7, 9, 7, 10, 5, 10, 5, 11, 1, 11, 1, 10, -1, 10, -1, 11, -5, 11, -5, 10, -7, 10, -7, 9, -9, 9, -9, 8, -10, 8, -10, 7, -11, 7, -11, 5, -12, 5, -12, 6, -13, 6, -13, 7, -15, 7, -15, 6, -17, 6, -17, 5, -18, 5, -18, 4, -19, 4, -19, 2, -18, 2, -18, 0, -17, 0, -17, -1, -16, -1, -16, -2, -17, -2, -17, -3, -23, -3, -23, -4, -25, -4, -25, -5, -26, -5, -26, -6, -27, -6, -27, -7, -28, -7, -28, -8, -8, -8, -8, -9, -7, -9, -7, -10, -3, -10, -3, -11, 3, -11)
 
 [node name="Creature" type="CharacterBody2D"]
 texture_filter = 1
@@ -23,9 +21,6 @@ shape = SubResource("CapsuleShape2D_u4on5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Headsquid" type="Sprite2D" parent="."]
-texture = ExtResource("2_joybx")
-
 [node name="Health" parent="." instance=ExtResource("3_6isda")]
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -34,7 +29,41 @@ texture = ExtResource("2_joybx")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u4on5")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_qxwdl")
+[node name="Tentacles" type="Node2D" parent="."]
+
+[node name="Tentacle" type="Line2D" parent="Tentacles"]
+texture_repeat = 2
+position = Vector2(-11, 0)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 3.0
+texture = ExtResource("2_8ywxa")
+texture_mode = 1
+
+[node name="Tentacle2" type="Line2D" parent="Tentacles"]
+texture_repeat = 2
+position = Vector2(11, 0)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 3.0
+texture = ExtResource("2_8ywxa")
+texture_mode = 1
+
+[node name="Tentacle3" type="Line2D" parent="Tentacles"]
+texture_repeat = 2
+position = Vector2(5, 5)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 3.0
+texture = ExtResource("2_8ywxa")
+texture_mode = 1
+
+[node name="Tentacle4" type="Line2D" parent="Tentacles"]
+texture_repeat = 2
+position = Vector2(-5, 5)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 3.0
+texture = ExtResource("2_8ywxa")
+texture_mode = 1
+
+[node name="Headsquid" type="Sprite2D" parent="."]
+texture = ExtResource("2_joybx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
