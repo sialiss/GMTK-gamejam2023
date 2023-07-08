@@ -7,8 +7,9 @@
 radius = 7.0
 height = 14.0
 
-[sub_resource type="Animation" id="Animation_nek6u"]
+[sub_resource type="Animation" id="Animation_imk58"]
 resource_name = "swim"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,15 +17,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": []
+"values": [0, 1]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wxyls"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6k3j"]
 _data = {
-"swim": SubResource("Animation_nek6u")
+"swim": SubResource("Animation_imk58")
 }
 
 [node name="RigidBody2D" type="RigidBody2D"]
@@ -40,9 +41,10 @@ shape = SubResource("CapsuleShape2D_7p3m6")
 unique_name_in_owner = true
 texture = ExtResource("2_vq4ho")
 hframes = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "swim"
 libraries = {
-"": SubResource("AnimationLibrary_wxyls")
+"": SubResource("AnimationLibrary_m6k3j")
 }
