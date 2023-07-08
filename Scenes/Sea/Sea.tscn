@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=8 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
@@ -17,16 +17,27 @@ func _process(delta):
 	pass
 "
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2bway"]
+[sub_resource type="Gradient" id="Gradient_qujjh"]
+colors = PackedColorArray(0, 0.0901961, 0.239216, 1, 0, 0.0470588, 0.121569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1cs2"]
+gradient = SubResource("Gradient_qujjh")
+fill_to = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h6fe1"]
 
 [node name="Sea" type="Node2D"]
 script = SubResource("GDScript_laj1i")
 
+[node name="ColorRect" type="TextureRect" parent="."]
+offset_left = -3368.0
+offset_top = -2552.0
+offset_right = 4072.0
+offset_bottom = 328.0
+texture = SubResource("GradientTexture2D_a1cs2")
+
 [node name="Creature" parent="." instance=ExtResource("1_2i86a")]
 position = Vector2(440, -40)
-physics_material_override = SubResource("PhysicsMaterial_2bway")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 329)

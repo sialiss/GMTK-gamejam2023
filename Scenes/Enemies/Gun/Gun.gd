@@ -33,7 +33,7 @@ func _physics_process(delta):
 	var old_rotation = rotation
 	var creature_position = creature.global_position
 	if predictive:
-		creature_position += creature.linear_velocity
+		creature_position += creature.velocity
 	look_at(creature_position)
 	rotation = move_toward(old_rotation, clamp(rotation, min_angle, max_angle), speed * delta)
 

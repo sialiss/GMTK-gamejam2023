@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://3rfuk48kok7o"]
+[gd_scene load_steps=7 format=3 uid="uid://3rfuk48kok7o"]
 
 [ext_resource type="Texture2D" uid="uid://dq2kmc8u3ygqa" path="res://Assets/Textures/HumanEnemies/Boss/turretsdesign.png" id="1_5kjxm"]
 [ext_resource type="Script" path="res://Scenes/Enemies/Bullet/Bullet.gd" id="1_c5jan"]
@@ -8,6 +8,16 @@ bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8g85"]
 radius = 2.0
+
+[sub_resource type="Gradient" id="Gradient_ktj4k"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lqhfl"]
+gradient = SubResource("Gradient_ktj4k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
 
 [node name="Bullet" type="RigidBody2D"]
 texture_filter = 1
@@ -23,3 +33,13 @@ shape = SubResource("CircleShape2D_c8g85")
 texture = ExtResource("1_5kjxm")
 region_enabled = true
 region_rect = Rect2(2, 13, 9, 9)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_lqhfl")
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]
