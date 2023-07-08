@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
-[ext_resource type="PackedScene" uid="uid://c27ik08huxew1" path="res://Scenes/Enemies/Fish/FishSpawn.tscn" id="3_m44fu"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemies/Fish/FishSpawn.tscn" id="3_m44fu"]
 [ext_resource type="PackedScene" uid="uid://lia64bjrnn4p" path="res://Scenes/Enemies/Submarine/Submarine.tscn" id="4_0byc0"]
 [ext_resource type="Texture2D" uid="uid://dkkrgh410kvfk" path="res://Assets/Textures/Terrain/TerrainSet1.png" id="4_32yco"]
 [ext_resource type="Texture2D" uid="uid://ontyk86wwly1" path="res://Assets/Textures/Terrain/TerrainSet2.png" id="5_uegxq"]
