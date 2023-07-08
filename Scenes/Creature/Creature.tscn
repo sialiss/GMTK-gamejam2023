@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c531hmqy1ihyj"]
+[gd_scene load_steps=6 format=3 uid="uid://c531hmqy1ihyj"]
 
 [ext_resource type="Script" path="res://Scenes/Creature/Creature.gd" id="1_qejp8"]
 [ext_resource type="Texture2D" uid="uid://b3jcc0xfviupi" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
 [ext_resource type="PackedScene" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mdsun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4on5"]
 radius = 12.0
@@ -11,9 +13,12 @@ height = 40.0
 [node name="Creature" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 256
+mass = 600.0
+physics_material_override = SubResource("PhysicsMaterial_mdsun")
 gravity_scale = 0.0
 linear_damp = 1.0
 script = ExtResource("1_qejp8")
+force = 100000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

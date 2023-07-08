@@ -5,6 +5,8 @@ extends Node2D
 @export_range(-360.0, 360.0) var max_angle_degrees = 0.0
 @export var speed_degrees = 360.0
 @export var predictive = false
+@export var shoot_cooldown = 1.0
+@export var bullet_scene: PackedScene
 
 
 @onready var min_angle = deg_to_rad(min_angle_degrees)
@@ -14,6 +16,12 @@ extends Node2D
 
 @onready var radius_area = $RadiusArea
 @onready var ray = $Ray
+@onready var cooldown_timer = $CooldownTimer
+@onready var bullet_position = $BulletPosition
+
+
+func _ready():
+	cooldown_timer.wait_time = shoot_cooldown
 
 
 func _physics_process(delta):
@@ -28,4 +36,16 @@ func _physics_process(delta):
 		creature_position += creature.linear_velocity
 	look_at(creature_position)
 	rotation = move_toward(old_rotation, clamp(rotation, min_angle, max_angle), speed * delta)
-	
+
+	# Shoot
+	if cooldown_timer.is_stopped():
+		if $Ray.get_collider() == creature:
+			shoot()
+
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	add_sibling(bullet)
+	bullet.global_position = bullet_position.global_position
+	bullet.shoot(rotation)
+	cooldown_timer.start()

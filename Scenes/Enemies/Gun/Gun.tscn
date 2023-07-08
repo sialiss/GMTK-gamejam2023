@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://taye5sbg7llp"]
+[gd_scene load_steps=6 format=3 uid="uid://taye5sbg7llp"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Gun/Gun.gd" id="1_v8ukw"]
 [ext_resource type="Texture2D" uid="uid://dq2kmc8u3ygqa" path="res://Assets/Textures/HumanEnemies/Boss/turretsdesign.png" id="2_8633w"]
+[ext_resource type="PackedScene" uid="uid://3rfuk48kok7o" path="res://Scenes/Enemies/Bullet/Bullet.tscn" id="2_e112h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bwy8e"]
 radius = 8.0
@@ -10,9 +11,10 @@ radius = 8.0
 radius = 180.0
 
 [node name="Gun" type="Node2D"]
-position = Vector2(-25.5, -38)
+texture_filter = 1
 rotation = -1.57079
 script = ExtResource("1_v8ukw")
+bullet_scene = ExtResource("2_e112h")
 
 [node name="Body" type="StaticBody2D" parent="."]
 
@@ -38,3 +40,9 @@ scale = Vector2(0.546114, 0.546114)
 texture = ExtResource("2_8633w")
 region_enabled = true
 region_rect = Rect2(38, 11, 23, 13)
+
+[node name="BulletPosition" type="Node2D" parent="."]
+position = Vector2(12, -7.53403e-05)
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
