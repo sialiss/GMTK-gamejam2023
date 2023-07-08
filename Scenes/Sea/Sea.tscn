@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=20 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="PackedScene" uid="uid://djqqcw56r6tas" path="res://Scenes/Enemies/Base/Base.tscn" id="2_ebr7j"]
@@ -137,6 +137,48 @@ texture = ExtResource("5_uegxq")
 sources/1 = SubResource("TileSetAtlasSource_506r3")
 sources/2 = SubResource("TileSetAtlasSource_lsqny")
 
+[sub_resource type="Animation" id="Animation_o412c"]
+resource_name = "follow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rvsk2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uxia7"]
+_data = {
+"RESET": SubResource("Animation_rvsk2"),
+"follow": SubResource("Animation_o412c")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_pa3h3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 879.18, -90.8688, 0, 0, 0, 0, 958.733, -322.109, 0, 0, 0, 0, 858.035, -776.453, 0, 0, 0, 0, 153.257, -733.053, 0, 0, 0, 0, -161.446, -535.719, 0, 0, 0, 0, 0.834686, -2.7125)
+}
+point_count = 7
+
 [node name="Sea" type="Node2D"]
 script = SubResource("GDScript_laj1i")
 
@@ -146,9 +188,6 @@ offset_top = -2552.0
 offset_right = 4072.0
 offset_bottom = 328.0
 texture = SubResource("GradientTexture2D_a1cs2")
-
-[node name="FishSpawn" parent="." instance=ExtResource("3_m44fu")]
-position = Vector2(370, 86)
 
 [node name="Creature" parent="." instance=ExtResource("1_2i86a")]
 position = Vector2(440, -40)
@@ -184,3 +223,22 @@ layer_0/tile_data = PackedInt32Array(1310725, 720898, 9, 1310724, 720898, 9, 131
 
 [node name="Submarine" parent="." instance=ExtResource("4_0byc0")]
 position = Vector2(3972, -1664)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SpawnPath")
+libraries = {
+"": SubResource("AnimationLibrary_uxia7")
+}
+
+[node name="SpawnPath" type="Path2D" parent="."]
+position = Vector2(520, 189)
+scale = Vector2(1.70955, 1.47465)
+curve = SubResource("Curve2D_pa3h3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="SpawnPath"]
+rotation = -0.102991
+
+[node name="FishSpawn" parent="SpawnPath/PathFollow2D" instance=ExtResource("3_m44fu")]
+position = Vector2(-80.0967, -78.4975)
+rotation = 0.102991
+scale = Vector2(0.58495, 0.678125)
