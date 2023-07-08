@@ -6,6 +6,7 @@ class_name Creature extends CharacterBody2D
 
 
 @onready var health = max_health
+@onready var tentacles = $Tentacles.get_children()
 
 
 func _ready():
@@ -21,12 +22,26 @@ func _physics_process(delta):
 	# velocity = velocity.lerp(Vector2.ZERO, 1*delta)
 	move_and_slide()
 
+	# Damage
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		print("Collided with: ", collider.name)
 		if collider.has_method("get_damage"):
 			receive_damage(collider)
+
+	# Tentacles
+	for tentacle in tentacles:
+		var tentacle_segments = tentacle.get_point_count()
+		for i in tentacle_segments:
+			if i == 0: continue
+			var point = tentacle.get_point_position(i)
+			var last_point = tentacle.get_point_position(i-1)
+
+			tentacle.set_point_position(
+				i,
+				point.lerp(last_point - velocity / tentacle_segments, 5*delta)
+			)
 	
 
 # Called when touched an enemy
