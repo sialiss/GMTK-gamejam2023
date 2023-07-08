@@ -27,7 +27,7 @@ func _physics_process(delta):
 		print("Collided with: ", collider.name)
 		if collider.has_method("get_damage"):
 			receive_damage(collider)
-	
+
 
 # Called when touched an enemy
 func receive_damage(body):
@@ -35,7 +35,7 @@ func receive_damage(body):
 	update_hp(damage)
 	if health <= 0:
 		die()
-	
+
 	if damage > 0 and body.has_method("on_dealt_damage"):
 		body.on_dealt_damage()
 

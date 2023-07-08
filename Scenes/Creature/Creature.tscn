@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Creature/Creature.gd" id="1_qejp8"]
 [ext_resource type="Texture2D" uid="uid://b3jcc0xfviupi" path="res://Assets/Textures/Player/headsquid.png" id="2_joybx"]
-[ext_resource type="PackedScene" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
+[ext_resource type="PackedScene" uid="uid://b4a8guppeaucg" path="res://Scenes/Creature/Health.tscn" id="3_6isda"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u4on5"]
 radius = 12.0
@@ -16,8 +16,6 @@ texture_filter = 1
 collision_layer = 256
 motion_mode = 1
 script = ExtResource("1_qejp8")
-speed = 200.0
-acceleration = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
