@@ -45,7 +45,7 @@ func die():
 	collision_layer = 0
 	# collision_mask = 0
 	$AnimationPlayer.play("die")
-	
+
 	var particles = get_node("ExplosionParticles")
 	var timer = get_node("ExplosionParticles/Timer")
 	particles.get_parent().remove_child(particles)
