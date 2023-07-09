@@ -64,7 +64,7 @@ func receive_damage(body):
 
 
 func die():
-	get_tree().change_scene_to_packed(load("res://Scenes/Menu/Menu.tscn"))
+	get_tree().change_scene_to_packed(load("res://Scenes/Menu/Death.tscn"))
 
 
 func update_max_health(new_max_health: float):

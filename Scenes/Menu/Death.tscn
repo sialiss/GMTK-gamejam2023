@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://rgshagn8nox4"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/Death.gd" id="1_ultuu"]
+
+[sub_resource type="Gradient" id="Gradient_crxlc"]
+colors = PackedColorArray(0.21, 0, 0.0175, 1, 0, 0.192157, 0.301961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_repr1"]
+gradient = SubResource("Gradient_crxlc")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ultuu")
+
+[node name="Back" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 450.0
+texture = SubResource("GradientTexture2D_repr1")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -26.0
+offset_right = 89.5
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "The monster was killed
+Humanity is saved..."
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 300.0
+offset_right = 441.0
+offset_bottom = 331.0
+text = "Reincarnate"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 343.0
+offset_right = 441.0
+offset_bottom = 374.0
+text = "Menu"
+
+[connection signal="pressed" from="Button" to="." method="restart"]
+[connection signal="pressed" from="Button2" to="." method="menu"]
