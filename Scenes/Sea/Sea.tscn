@@ -256,3 +256,5 @@ spawn_to_node = NodePath(".")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_u4pel")
+volume_db = -35.0
+autoplay = true
