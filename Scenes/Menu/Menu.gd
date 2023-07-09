@@ -5,8 +5,8 @@ var game_scene = preload("res://Scenes/Sea/Sea.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Credits.hide()
-	if OS.get_name() == "HTML5":
-		$ButtionQuit.hide()
+	if OS.get_name() == "Web":
+		$ButtonQuit.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
