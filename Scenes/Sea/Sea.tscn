@@ -548,4 +548,29 @@ shape = SubResource("RectangleShape2D_c6bh4")
 position = Vector2(-1.25, -262)
 shape = SubResource("RectangleShape2D_eew4g")
 
+[node name="Label" type="Label" parent="cave"]
+offset_left = -458.0
+offset_top = -237.0
+offset_right = -96.0
+offset_bottom = -211.0
+text = "Feed the deep sea monster to make it stronger"
+
+[node name="Label3" type="Label" parent="cave"]
+offset_left = -459.0
+offset_top = -306.0
+offset_right = -97.0
+offset_bottom = -280.0
+text = "WASD to move
+LMB to attack"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="cave"]
+offset_left = -476.0
+offset_top = -48.0
+offset_right = -66.0
+offset_bottom = 4.0
+text = "Destroy the three stations and the submarine to win!
+(there's no actual win screen or anything, sorry)"
+horizontal_alignment = 1
+
 [connection signal="reached_full_hp" from="Creature" to="SubmarineSpawn" method="spawn"]
