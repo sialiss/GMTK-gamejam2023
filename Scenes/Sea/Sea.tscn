@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=24 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="Script" path="res://Scenes/Sea/Sea.gd" id="1_23wu7"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://b5u6dr5sieqd3" path="res://Assets/OST/Boss/Acid Water.wav" id="10_u4pel"]
 
 [sub_resource type="Gradient" id="Gradient_qujjh"]
-colors = PackedColorArray(0, 0.0901961, 0.239216, 1, 0, 0.0470588, 0.121569, 1)
+colors = PackedColorArray(0, 0.109804, 0.278431, 1, 0, 0.0470588, 0.121569, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_a1cs2"]
 gradient = SubResource("Gradient_qujjh")
@@ -23,6 +23,8 @@ fill_to = Vector2(0, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_85xqh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mhvf8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ljw3s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_506r3"]
 texture = ExtResource("4_32yco")
@@ -178,7 +180,7 @@ script = ExtResource("1_23wu7")
 
 [node name="ColorRect" type="TextureRect" parent="."]
 offset_left = -3368.0
-offset_top = -2552.0
+offset_top = -4130.0
 offset_right = 4072.0
 offset_bottom = 328.0
 texture = SubResource("GradientTexture2D_a1cs2")
@@ -208,6 +210,13 @@ rotation = -1.5708
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
 shape = SubResource("WorldBoundaryShape2D_mhvf8")
+
+[node name="roof" type="StaticBody2D" parent="."]
+position = Vector2(0, -2552)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="roof"]
+shape = SubResource("WorldBoundaryShape2D_ljw3s")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_6orql")
