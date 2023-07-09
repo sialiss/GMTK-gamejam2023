@@ -7,6 +7,7 @@ extends RigidBody2D
 
 
 @onready var line = $Line
+@onready var eat_audio = $EatAudio
 
 
 var anchor_point: Node2D
@@ -46,6 +47,11 @@ func _physics_process(delta):
 		collider.add_child(self)
 		global_position = global_pos
 		is_connected = true
+
+		remove_child(eat_audio)
+		Sea.sea.add_child(eat_audio)
+		eat_audio.global_position = global_pos
+		eat_audio.play()
 		break
 
 

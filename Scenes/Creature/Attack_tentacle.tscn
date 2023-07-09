@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpl5ef37bsxus"]
+[gd_scene load_steps=6 format=3 uid="uid://bpl5ef37bsxus"]
 
 [ext_resource type="Texture2D" uid="uid://l6ce3y60hocx" path="res://Assets/Textures/Player/tentacle_body.png" id="1_cxofo"]
 [ext_resource type="Script" path="res://Scenes/Creature/Attack_tentacle.gd" id="1_ea8gk"]
 [ext_resource type="Texture2D" uid="uid://b31y2ejs5qice" path="res://Assets/Textures/Player/tentacle_spike.png" id="2_ouwos"]
+[ext_resource type="AudioStream" uid="uid://lmg3j0n1hnol" path="res://Assets/Audio/Player/Eating.mp3" id="4_e5irm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m20np"]
 radius = 3.0
@@ -32,8 +33,12 @@ texture_mode = 1
 texture = ExtResource("2_ouwos")
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="EatAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e5irm")
+
 [connection signal="timeout" from="Lifetime" to="." method="queue_free"]
+[connection signal="finished" from="EatAudio" to="EatAudio" method="queue_free"]
