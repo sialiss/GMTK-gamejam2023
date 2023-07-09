@@ -32,9 +32,15 @@ func wait(seconds):
 func die():
 	$Bang.play()
 	$CollisionShape2D.set_deferred("disabled", true)
-	var tween = create_tween()
-	tween.tween_property(get_parent(), "modulate", Color.TRANSPARENT, 3)
-	tween.tween_callback(Callable(get_parent(), "queue_free"))
+	get_node("../AnimationPlayer").play("die")
+
+	var particles = get_node("../ExplosionParticles")
+	var timer = get_node("../ExplosionParticles/Timer")
+	particles.get_parent().remove_child(particles)
+	Sea.sea.add_child(particles)
+	particles.global_position = global_position
+	particles.emitting = true
+	timer.start()
 
 func get_upgrade(body):
 	pass

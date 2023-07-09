@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://lia64bjrnn4p"]
+[gd_scene load_steps=17 format=3 uid="uid://lia64bjrnn4p"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Submarine/Submarine.gd" id="1_jdn3m"]
 [ext_resource type="Texture2D" uid="uid://y8c2d2u7drlp" path="res://Assets/Textures/HumanEnemies/Boss/Submarine.png" id="1_sk1ul"]
 [ext_resource type="PackedScene" uid="uid://taye5sbg7llp" path="res://Scenes/Enemies/Gun/Gun.tscn" id="2_ctf7w"]
 [ext_resource type="AudioStream" uid="uid://ctwh61wyrot4q" path="res://Assets/Audio/Humans/Explosion.mp3" id="4_x2rbv"]
+[ext_resource type="AudioStream" uid="uid://ccjiv4cgukipp" path="res://Assets/OST/Boss/ScaredOfDepth.wav" id="5_v64ql"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cy414"]
 radius = 15.0
@@ -14,6 +15,140 @@ height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uavnv"]
 size = Vector2(294, 134)
+
+[sub_resource type="Gradient" id="Gradient_s3lxe"]
+offsets = PackedFloat32Array(0, 0.68652, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.316614, 0.316614, 0.316614, 1, 0.12, 0.12, 0.12, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cyt2e"]
+gradient = SubResource("Gradient_s3lxe")
+
+[sub_resource type="Curve" id="Curve_hde5l"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.02, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.76201, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lfc0q"]
+curve = SubResource("Curve_hde5l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kc5n6"]
+lifetime_randomness = 0.42
+emission_shape = 1
+emission_sphere_radius = 58.5
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 10, 0)
+initial_velocity_min = 32.09
+initial_velocity_max = 96.26
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_max = 6.2
+scale_curve = SubResource("CurveTexture_lfc0q")
+color = Color(0.866667, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_cyt2e")
+turbulence_enabled = true
+
+[sub_resource type="Animation" id="Animation_qlq57"]
+resource_name = "die"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bang:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0q2v3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bang:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkkcp"]
+_data = {
+"RESET": SubResource("Animation_0q2v3"),
+"die": SubResource("Animation_qlq57")
+}
 
 [node name="Submarine" type="CharacterBody2D"]
 texture_filter = 1
@@ -65,6 +200,33 @@ shape = SubResource("RectangleShape2D_uavnv")
 [node name="CreaturePositionUnder" type="Node2D" parent="AreaUnder"]
 position = Vector2(224, 84)
 
-[node name="Bang" type="AudioStreamPlayer" parent="."]
+[node name="Bang" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_x2rbv")
 volume_db = 10.0
+max_distance = 1000.0
+attenuation = 2.82843
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v64ql")
+autoplay = true
+max_distance = 1000.0
+attenuation = 2.73208
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_kc5n6")
+lifetime = 15.0
+one_shot = true
+explosiveness = 0.9
+
+[node name="Timer" type="Timer" parent="ExplosionParticles"]
+wait_time = 20.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pkkcp")
+}
+
+[connection signal="timeout" from="ExplosionParticles/Timer" to="ExplosionParticles" method="queue_free"]

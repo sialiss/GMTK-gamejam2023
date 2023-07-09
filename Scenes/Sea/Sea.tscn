@@ -282,4 +282,7 @@ shape = SubResource("CircleShape2D_1q45n")
 [node name="Audio" type="AudioStreamPlayer" parent="SubmarineSpawn"]
 stream = ExtResource("12_biryv")
 
+[node name="Submarine" parent="." instance=ExtResource("12_u8466")]
+position = Vector2(-280, -672)
+
 [connection signal="reached_full_hp" from="Creature" to="SubmarineSpawn" method="spawn"]
