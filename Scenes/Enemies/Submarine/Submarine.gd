@@ -3,12 +3,12 @@ class_name Submarine extends CharacterBody2D
 
 @export var speed = 100.0
 @export var acceleration = 100.0
-
+@export var health = 20
+@export var damage = 1
 
 @onready var creature_position = $CreaturePosition
 @onready var creature_position_under = $AreaUnder/CreaturePositionUnder
 @onready var area_under = $AreaUnder
-
 
 var target
 
@@ -27,3 +27,20 @@ func _physics_process(delta):
 	# Move
 	velocity = velocity.move_toward(input * speed, acceleration * delta)
 	move_and_slide()
+
+func receive_damage(body):
+	var damage = body.get_damage()
+	health -= damage
+	if health <= 0:
+		die()
+		if body.has_method("upgrade"):
+			body.upgrade(self.get_upgrade)
+
+	if damage > 0 and body.has_method("on_dealt_damage"):
+		body.on_dealt_damage()
+
+func die():
+	$CollisionShape2D.set_deferred("disabled", true)
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	tween.tween_callback(Callable(self, "queue_free"))

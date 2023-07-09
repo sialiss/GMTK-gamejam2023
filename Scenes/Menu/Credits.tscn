@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=3 uid="uid://bu32ujewrm05k"]
+
+[ext_resource type="Texture2D" uid="uid://lpmu3p1la7d1" path="res://Assets/Textures/XenoLife/shark.png" id="1_pkuex"]
+[ext_resource type="Script" path="res://Scenes/Menu/Credits.gd" id="1_y0af7"]
+[ext_resource type="Texture2D" uid="uid://bqgmbh33tubmj" path="res://Assets/Textures/XenoLife/jellyfish.png" id="2_bdkuh"]
+
+[sub_resource type="Gradient" id="Gradient_ofpt1"]
+colors = PackedColorArray(0, 0, 0.207843, 1, 0, 0.192157, 0.301961, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jmg5t"]
+gradient = SubResource("Gradient_ofpt1")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_fb4df"]
+resource_name = "swim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shark:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shark2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ed0q1"]
+_data = {
+"swim": SubResource("Animation_fb4df")
+}
+
+[sub_resource type="Animation" id="Animation_58er4"]
+resource_name = "swim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jelly:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o7vbw"]
+_data = {
+"swim": SubResource("Animation_58er4")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_of2dw"]
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o7l3"]
+
+[sub_resource type="Theme" id="Theme_14c2e"]
+Button/fonts/font = SubResource("SystemFont_of2dw")
+Button/styles/normal = SubResource("StyleBoxEmpty_2o7l3")
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_y0af7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = -2.0
+offset_right = 800.0
+offset_bottom = 451.0
+texture = SubResource("GradientTexture2D_jmg5t")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = -67.0
+offset_right = 221.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Gamedesign - all
+Programming - och, camellia
+Art, music - Brain Canibala"
+
+[node name="LinkButton" type="LinkButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.0
+offset_top = 58.0
+offset_right = 69.0
+offset_bottom = 113.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "GitHub"
+uri = "https://github.com/sialiss/GMTK-gamejam2023"
+
+[node name="Shark" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(673, 397)
+rotation = -0.147124
+scale = Vector2(3, 3)
+texture = ExtResource("1_pkuex")
+hframes = 2
+
+[node name="Shark2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(716, 309)
+rotation = -0.22131
+scale = Vector2(3, 3)
+texture = ExtResource("1_pkuex")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swim"
+libraries = {
+"": SubResource("AnimationLibrary_ed0q1")
+}
+
+[node name="Jelly" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(50, 283)
+scale = Vector2(3, 3)
+texture = ExtResource("2_bdkuh")
+hframes = 4
+frame = 3
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "swim"
+libraries = {
+"": SubResource("AnimationLibrary_o7vbw")
+}
+
+[node name="Back" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -57.0
+offset_top = -90.0
+offset_right = 53.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme = SubResource("Theme_14c2e")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
