@@ -45,7 +45,7 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
-	add_sibling(bullet)
+	Sea.sea.add_child(bullet)
 	bullet.global_position = bullet_position.global_position
 	bullet.shoot(rotation)
 	$Audio.play()
