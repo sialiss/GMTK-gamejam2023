@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c27ik08huxew1"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Fish/FishSpawn.gd" id="1_7lq7t"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Fishes/FishSpawn.gd" id="1_7lq7t"]
 
 [sub_resource type="Curve2D" id="Curve2D_3eh5s"]
 _data = {

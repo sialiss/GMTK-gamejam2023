@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://3pi360uwaxyl"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Fish/EnemyFish.gd" id="1_0b6co"]
-[ext_resource type="Texture2D" uid="uid://cyte316owwhe3" path="res://Assets/Textures/XenoLife/fish1.png" id="2_vq4ho"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Fishes/NeutralFish.gd" id="1_1nx14"]
+[ext_resource type="Texture2D" uid="uid://cyte316owwhe3" path="res://Assets/Textures/XenoLife/fish1.png" id="2_2sdbe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7p3m6"]
 radius = 7.0
@@ -34,12 +34,12 @@ polygon = PackedVector2Array(0, -5, 1, -5, 1, -4, 2, -4, 2, -2, 1, -2, 1, -1, 0,
 [sub_resource type="CircleShape2D" id="CircleShape2D_wwmdd"]
 radius = 119.004
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="NeutralFish" type="RigidBody2D"]
 texture_filter = 1
 collision_layer = 16
 collision_mask = 273
 gravity_scale = 0.0
-script = ExtResource("1_0b6co")
+script = ExtResource("1_1nx14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -47,9 +47,8 @@ shape = SubResource("CapsuleShape2D_7p3m6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("2_vq4ho")
+texture = ExtResource("2_2sdbe")
 hframes = 2
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "swim"

@@ -1,7 +1,6 @@
 class_name FishSpawn extends Node2D
 
-var fish = preload("res://Scenes/Enemies/Fish/EnemyFish.tscn")
-
+@export var fish = Resource
 
 @export var spawn_to_node: Node
 
@@ -20,7 +19,6 @@ func _on_FishTimer_timeout():
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("Path2D/PathFollow2D")
 	mob_spawn_location.set_progress_ratio(randf_range(0, 1))
-
 
 	# Spawn the mob by adding it to the Main scene.
 	spawn_to_node.add_child(mob)

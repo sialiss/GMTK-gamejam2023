@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://738jkcksi27m"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/Fishes/EnemyFish.gd" id="1_lraru"]
+[ext_resource type="Texture2D" uid="uid://lpmu3p1la7d1" path="res://Assets/Textures/XenoLife/shark.png" id="2_7a2gi"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgkqy"]
+radius = 11.0
+height = 56.0
+
+[sub_resource type="Animation" id="Animation_t6824"]
+resource_name = "swim"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wpi1o"]
+_data = {
+"swim": SubResource("Animation_t6824")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2isbf"]
+radius = 137.058
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_y6d4m"]
+polygon = PackedVector2Array(-23, 10, -23, -10, -19, -1, -16, -6, -8, -7, -5, -11, 2, -11, 6, -7, 10, -7, 14, -9, 17, -6, 24, -6, 26, -1, 26, 3, 24, 6, 17, 6, 15, 9, 12, 9, 10, 6, 6, 6, 2, 10, -5, 11, -7, 6, -15, 6, -19, 2)
+
+[node name="EnemyFish" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 273
+gravity_scale = 0.0
+script = ExtResource("1_lraru")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7a2gi")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wgkqy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "swim"
+libraries = {
+"": SubResource("AnimationLibrary_wpi1o")
+}
+
+[node name="PositionNotifier" type="Area2D" parent="."]
+position = Vector2(4.5, 3)
+collision_layer = 0
+collision_mask = 768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionNotifier"]
+position = Vector2(-4.5, -3)
+shape = SubResource("CircleShape2D_2isbf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_y6d4m")
