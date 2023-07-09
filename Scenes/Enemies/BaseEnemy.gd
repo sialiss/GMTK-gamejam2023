@@ -11,4 +11,7 @@ func harm(taken_damage: float):
 		die()
 
 func die():
-	queue_free()
+	$CollisionShape2D.set_deferred("disabled", true)
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	tween.tween_callback(Callable(self, "queue_free"))
