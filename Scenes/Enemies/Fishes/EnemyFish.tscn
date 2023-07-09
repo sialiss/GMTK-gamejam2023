@@ -39,6 +39,7 @@ collision_layer = 16
 collision_mask = 273
 gravity_scale = 0.0
 script = ExtResource("1_lraru")
+health = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7a2gi")
