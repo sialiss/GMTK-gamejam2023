@@ -64,8 +64,7 @@ func receive_damage(body):
 
 
 func die():
-	#queue_free()
-	pass
+	get_tree().change_scene_to_packed(load("res://Scenes/Menu/Menu.tscn"))
 
 
 func update_max_health(new_max_health: float):
@@ -84,11 +83,6 @@ func update_bars():
 	bars.get_node("%Health").value = health
 	bars.get_node("%Speed").value = speed
 	bars.get_node("%Attack").value = attack_distance
-
-
-func _on_area_2d_body_entered(body):
-	#update_health(body.damage)
-	pass
 
 
 func shoot():
