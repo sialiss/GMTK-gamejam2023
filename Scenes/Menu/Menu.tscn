@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlmmogewc7qs1"]
+[gd_scene load_steps=16 format=3 uid="uid://dlmmogewc7qs1"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/Menu.gd" id="1_7eqmc"]
 [ext_resource type="Texture2D" uid="uid://bhy5isjkhf58p" path="res://Assets/Textures/SquidAlien.png" id="2_5dntk"]
 [ext_resource type="Texture2D" uid="uid://cyte316owwhe3" path="res://Assets/Textures/XenoLife/fish1.png" id="2_bkc5v"]
 [ext_resource type="Texture2D" uid="uid://b4t7r4cb73kug" path="res://Assets/Textures/HumanEnemies/Boss/Base1.png" id="4_5k24p"]
 [ext_resource type="PackedScene" uid="uid://bu32ujewrm05k" path="res://Scenes/Menu/Credits.tscn" id="5_uoppk"]
+[ext_resource type="AudioStream" uid="uid://c8jqim46tkbaw" path="res://Assets/OST/Boss/Atlas.wav" id="6_d7go4"]
 
 [sub_resource type="Gradient" id="Gradient_7s561"]
 colors = PackedColorArray(0, 0, 0.207843, 1, 0, 0.192157, 0.301961, 1)
@@ -251,6 +252,11 @@ texture = ExtResource("4_5k24p")
 
 [node name="Credits" parent="." instance=ExtResource("5_uoppk")]
 visible = false
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_d7go4")
+volume_db = -40.289
+autoplay = true
 
 [connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="ButtonCredits" to="." method="_on_button_credits_pressed"]
