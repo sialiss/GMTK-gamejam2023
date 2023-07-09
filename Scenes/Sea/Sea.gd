@@ -7,7 +7,6 @@ static var sea: Sea
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sea = self
-	$BackgroundMusic.play()
 	pass # Replace with function body.
 
 

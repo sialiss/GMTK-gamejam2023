@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpl5ef37bsxus"]
+
+[ext_resource type="Texture2D" uid="uid://l6ce3y60hocx" path="res://Assets/Textures/Player/tentacle_body.png" id="1_cxofo"]
+[ext_resource type="Script" path="res://Scenes/Creature/Attack_tentacle.gd" id="1_ea8gk"]
+[ext_resource type="Texture2D" uid="uid://b31y2ejs5qice" path="res://Assets/Textures/Player/tentacle_spike.png" id="2_ouwos"]
+[ext_resource type="AudioStream" uid="uid://lmg3j0n1hnol" path="res://Assets/Audio/Player/Eating.mp3" id="4_e5irm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m20np"]
+radius = 3.0
+
+[node name="AttackTentacle" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 17
+gravity_scale = 0.2
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ea8gk")
+max_distance = 300
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m20np")
+
+[node name="Line" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(0, 0, -25, 0)
+width = 3.0
+texture = ExtResource("1_cxofo")
+texture_mode = 1
+
+[node name="TentacleSpike" type="Sprite2D" parent="."]
+texture = ExtResource("2_ouwos")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="EatAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e5irm")
+
+[connection signal="timeout" from="Lifetime" to="." method="queue_free"]
+[connection signal="finished" from="EatAudio" to="EatAudio" method="queue_free"]

@@ -3,9 +3,11 @@ class_name Creature extends CharacterBody2D
 @export var max_health = 100
 @export var speed = 100.0
 @export var acceleration = 100.0
+@export var attack_tentacle_scene: PackedScene
 
 
 @onready var health = max_health
+@onready var attack_tentacle_position = $AttackTentaclePosition
 @onready var tentacles = $Tentacles.get_children()
 
 
@@ -35,6 +37,9 @@ func _physics_process(delta):
 				point.lerp(last_point - velocity / tentacle_segments, 5*delta)
 			)
 
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
 
 # Called when touched an enemy
 func receive_damage(body):
@@ -60,3 +65,12 @@ func update_hp(taken_damage: float):
 func _on_area_2d_body_entered(body):
 	#update_hp(body.damage)
 	pass
+
+
+func shoot():
+	var tentacle = attack_tentacle_scene.instantiate()
+	tentacle.set_anchor(attack_tentacle_position)
+	add_sibling(tentacle)
+	tentacle.global_position = attack_tentacle_position.global_position
+	tentacle.shoot(get_local_mouse_position().angle())
+	# cooldown_timer.start()
