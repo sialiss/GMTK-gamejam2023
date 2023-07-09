@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lia64bjrnn4p"]
+[gd_scene load_steps=8 format=3 uid="uid://lia64bjrnn4p"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Submarine/Submarine.gd" id="1_jdn3m"]
 [ext_resource type="Texture2D" uid="uid://y8c2d2u7drlp" path="res://Assets/Textures/HumanEnemies/Boss/Submarine.png" id="1_sk1ul"]
 [ext_resource type="PackedScene" uid="uid://taye5sbg7llp" path="res://Scenes/Enemies/Gun/Gun.tscn" id="2_ctf7w"]
+[ext_resource type="AudioStream" uid="uid://ctwh61wyrot4q" path="res://Assets/Audio/Humans/Explosion.mp3" id="4_x2rbv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cy414"]
 radius = 15.0
@@ -63,3 +64,7 @@ shape = SubResource("RectangleShape2D_uavnv")
 
 [node name="CreaturePositionUnder" type="Node2D" parent="AreaUnder"]
 position = Vector2(224, 84)
+
+[node name="Bang" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x2rbv")
+volume_db = 10.0
