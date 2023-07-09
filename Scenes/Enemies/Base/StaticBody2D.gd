@@ -24,9 +24,17 @@ func receive_damage(body):
 	if damage > 0 and body.has_method("on_dealt_damage"):
 		body.on_dealt_damage()
 
-func die():
+func wait(seconds):
+	var timer = get_tree().create_timer(seconds)
+	await timer.timeout
+	timer.queue_free()
 
-	get_parent().queue_free()
+func die():
+	$Bang.play()
+	$CollisionShape2D.set_deferred("disabled", true)
+	var tween = create_tween()
+	tween.tween_property(get_parent(), "modulate", Color.TRANSPARENT, 3)
+	tween.tween_callback(Callable(get_parent(), "queue_free"))
 
 func get_upgrade(body):
 	pass

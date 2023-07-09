@@ -1,5 +1,9 @@
 class_name Creature extends CharacterBody2D
 
+
+signal reached_full_hp
+
+
 @export var max_health = 100
 @export var speed = 100.0
 @export var acceleration = 100.0
@@ -62,6 +66,13 @@ func receive_damage(body):
 func die():
 	#queue_free()
 	pass
+
+
+func update_max_health(new_max_health: float):
+	var old_health = max_health
+	max_health = clamp(new_max_health, 0, 100)
+	if old_health < 100 and new_max_health >= 100:
+		reached_full_hp.emit()
 
 
 func update_health(new_health: float):

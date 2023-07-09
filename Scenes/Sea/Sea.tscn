@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=28 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="Script" path="res://Scenes/Sea/Sea.gd" id="1_23wu7"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://3pi360uwaxyl" path="res://Scenes/Enemies/Fishes/NeutralFish.tscn" id="8_ffmkx"]
 [ext_resource type="AudioStream" uid="uid://b5u6dr5sieqd3" path="res://Assets/OST/Boss/Acid Water.wav" id="10_u4pel"]
 [ext_resource type="AudioStream" uid="uid://bj3q82glqn8q5" path="res://Assets/Audio/General/MonsterAttack.mp3" id="10_ukxih"]
+[ext_resource type="Script" path="res://Scenes/Enemies/Submarine/SubmarineSpawn.gd" id="11_s6pw1"]
+[ext_resource type="AudioStream" uid="uid://bpj8ad26xbhbe" path="res://Assets/Audio/General/SubmarineAttack.mp3" id="12_biryv"]
+[ext_resource type="PackedScene" uid="uid://lia64bjrnn4p" path="res://Scenes/Enemies/Submarine/Submarine.tscn" id="12_u8466"]
 
 [sub_resource type="Gradient" id="Gradient_qujjh"]
 colors = PackedColorArray(0, 0.109804, 0.278431, 1, 0, 0.0470588, 0.121569, 1)
@@ -175,6 +178,9 @@ _data = {
 "follow": SubResource("Animation_o412c")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1q45n"]
+radius = 1032.0
+
 [node name="Sea" type="Node2D"]
 script = ExtResource("1_23wu7")
 
@@ -263,3 +269,17 @@ autoplay = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ukxih")
 autoplay = true
+
+[node name="SubmarineSpawn" type="Area2D" parent="."]
+position = Vector2(-1272, -2936)
+script = ExtResource("11_s6pw1")
+submarine_scene = ExtResource("12_u8466")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubmarineSpawn"]
+shape = SubResource("CircleShape2D_1q45n")
+
+[node name="Audio" type="AudioStreamPlayer" parent="SubmarineSpawn"]
+stream = ExtResource("12_biryv")
+
+[connection signal="reached_full_hp" from="Creature" to="SubmarineSpawn" method="spawn"]

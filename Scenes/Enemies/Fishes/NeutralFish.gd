@@ -30,6 +30,7 @@ func _physics_process(delta):
 
 
 func get_upgrade(body):
+	body.update_max_health(body.max_health + 1)
 	body.update_health(body.health + 1)
 
 	body.speed = clamp(body.speed + 2, 0, 400)

@@ -25,8 +25,8 @@ func _physics_process(delta):
 		for collider in get_colliding_bodies():
 			if collider.has_method("receive_damage") and not (collider is EnemyFish):
 				collider.receive_damage(self)
-	
-	
+
+
 func get_damage():
 	return damage
 
@@ -36,6 +36,7 @@ func on_dealt_damage():
 
 
 func get_upgrade(body):
+	body.update_max_health(body.max_health + 2)
 	body.update_health(body.health + 2)
 
 	body.attack_distance = clamp(body.attack_distance + 10, 0, 400)

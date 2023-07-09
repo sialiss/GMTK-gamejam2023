@@ -50,6 +50,7 @@ collision_layer = 256
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_qejp8")
+max_health = 20
 speed = 200.0
 acceleration = 200.0
 attack_tentacle_scene = ExtResource("2_chqnk")
