@@ -214,6 +214,7 @@ layer_0/tile_data = PackedInt32Array(1310725, 720898, 9, 1310724, 720898, 9, 131
 
 [node name="Submarine" parent="." instance=ExtResource("4_0byc0")]
 position = Vector2(3972, -1664)
+collision_layer = 513
 
 [node name="SpawnPath" type="Path2D" parent="."]
 position = Vector2(510, 15)
