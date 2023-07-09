@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bu32ujewrm05k" path="res://Scenes/Menu/Credits.tscn" id="5_uoppk"]
 [ext_resource type="AudioStream" uid="uid://c8jqim46tkbaw" path="res://Assets/OST/Boss/Atlas.wav" id="6_d7go4"]
 
-[sub_resource type="Gradient" id="Gradient_7s561"]
+[sub_resource type="Gradient" id="Gradient_vv486"]
 colors = PackedColorArray(0, 0, 0.207843, 1, 0, 0.192157, 0.301961, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g7tid"]
-gradient = SubResource("Gradient_7s561")
+gradient = SubResource("Gradient_vv486")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
 
