@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=23 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="Script" path="res://Scenes/Sea/Sea.gd" id="1_23wu7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ontyk86wwly1" path="res://Assets/Textures/Terrain/TerrainSet2.png" id="5_uegxq"]
 [ext_resource type="PackedScene" uid="uid://738jkcksi27m" path="res://Scenes/Enemies/Fishes/EnemyFish.tscn" id="8_cby4j"]
 [ext_resource type="PackedScene" uid="uid://3pi360uwaxyl" path="res://Scenes/Enemies/Fishes/NeutralFish.tscn" id="8_ffmkx"]
+[ext_resource type="AudioStream" uid="uid://b5u6dr5sieqd3" path="res://Assets/OST/Boss/Acid Water.wav" id="10_u4pel"]
 
 [sub_resource type="Gradient" id="Gradient_qujjh"]
 colors = PackedColorArray(0, 0.0901961, 0.239216, 1, 0, 0.0470588, 0.121569, 1)
@@ -242,3 +243,7 @@ spawn_to_node = NodePath("../../..")
 position = Vector2(-924, -310)
 fish = ExtResource("8_cby4j")
 spawn_to_node = NodePath(".")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_u4pel")
+volume_db = -40.329
