@@ -16,7 +16,6 @@ gravity_scale = 0.2
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_ea8gk")
-max_distance = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m20np")

@@ -16,3 +16,9 @@ func _physics_process(delta):
 	# Move
 	linear_velocity = linear_velocity.move_toward(input * speed, acceleration * delta)
 	
+
+func get_upgrade(body):
+	body.max_health = clamp(body.max_health + 2, 0, 100)
+	body.update_health(body.health + 2)
+
+	body.attack_distance = clamp(body.attack_distance + 10, 0, 400)

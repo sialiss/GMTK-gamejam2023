@@ -55,6 +55,9 @@ func _physics_process(delta):
 		break
 
 
+func upgrade(upgrade_func: Callable):
+	anchor_point.get_parent().upgrade(upgrade_func)
+
 
 # func on_dealt_damage():
 # 	queue_free()
