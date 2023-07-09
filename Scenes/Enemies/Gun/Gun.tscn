@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://taye5sbg7llp"]
+[gd_scene load_steps=8 format=3 uid="uid://taye5sbg7llp"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Gun/Gun.gd" id="1_v8ukw"]
 [ext_resource type="Texture2D" uid="uid://dq2kmc8u3ygqa" path="res://Assets/Textures/HumanEnemies/Boss/turretsdesign.png" id="2_8633w"]
 [ext_resource type="PackedScene" uid="uid://3rfuk48kok7o" path="res://Scenes/Enemies/Bullet/Bullet.tscn" id="2_e112h"]
 [ext_resource type="Texture2D" uid="uid://dakqc2vqgltud" path="res://Assets/Textures/spotlight.png" id="4_mor0q"]
+[ext_resource type="AudioStream" uid="uid://0isw2abt0r2d" path="res://Assets/Audio/Humans/LaserBeam.mp3" id="5_rych7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bwy8e"]
 radius = 8.0
@@ -56,4 +57,7 @@ shadow_enabled = true
 texture = ExtResource("4_mor0q")
 texture_scale = 3.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rych7")
+max_distance = 1000.0
+attenuation = 3.73213

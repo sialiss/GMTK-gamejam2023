@@ -18,7 +18,6 @@ func _physics_process(delta):
 	$Sprite2D.look_at(global_position + linear_velocity)
 
 func get_upgrade(body):
-	body.max_health = clamp(body.max_health + 2, 0, 100)
 	body.update_health(body.health + 2)
 
 	body.attack_distance = clamp(body.attack_distance + 10, 0, 400)
