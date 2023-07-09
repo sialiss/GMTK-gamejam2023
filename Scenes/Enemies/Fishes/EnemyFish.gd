@@ -14,8 +14,8 @@ func _physics_process(delta):
 	var input = global_position.direction_to(target_position)
 
 	# Move
-	linear_velocity = linear_velocity.move_toward(input * speed, acceleration * delta)
-	
+	constant_force = input * speed
+	$Sprite2D.look_at(global_position + linear_velocity)
 
 func get_upgrade(body):
 	body.update_health(body.health + 2)
