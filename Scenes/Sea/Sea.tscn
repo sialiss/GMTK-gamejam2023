@@ -186,7 +186,7 @@ offset_bottom = 328.0
 texture = SubResource("GradientTexture2D_a1cs2")
 
 [node name="Creature" parent="." instance=ExtResource("1_2i86a")]
-position = Vector2(968, -1112)
+position = Vector2(72, -568)
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 329)
@@ -251,7 +251,7 @@ fish = ExtResource("8_ffmkx")
 spawn_to_node = NodePath("../../..")
 
 [node name="FishSpawn" parent="." node_paths=PackedStringArray("spawn_to_node") instance=ExtResource("3_m44fu")]
-position = Vector2(-924, -310)
+position = Vector2(1840, -1168)
 fish = ExtResource("8_cby4j")
 spawn_to_node = NodePath(".")
 
