@@ -36,6 +36,7 @@ func on_dealt_damage():
 
 
 func get_upgrade(body):
+	body.update_max_health(body.max_health + 2)
 	body.update_health(body.health + 2)
 
 	body.attack_distance = clamp(body.attack_distance + 10, 0, 400)
