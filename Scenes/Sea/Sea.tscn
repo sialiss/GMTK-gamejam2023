@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg5tc2suqrt5x"]
+[gd_scene load_steps=24 format=3 uid="uid://bg5tc2suqrt5x"]
 
 [ext_resource type="PackedScene" uid="uid://c531hmqy1ihyj" path="res://Scenes/Creature/Creature.tscn" id="1_2i86a"]
 [ext_resource type="Script" path="res://Scenes/Sea/Sea.gd" id="1_23wu7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://738jkcksi27m" path="res://Scenes/Enemies/Fishes/EnemyFish.tscn" id="8_cby4j"]
 [ext_resource type="PackedScene" uid="uid://3pi360uwaxyl" path="res://Scenes/Enemies/Fishes/NeutralFish.tscn" id="8_ffmkx"]
 [ext_resource type="AudioStream" uid="uid://b5u6dr5sieqd3" path="res://Assets/OST/Boss/Acid Water.wav" id="10_u4pel"]
+[ext_resource type="AudioStream" uid="uid://bj3q82glqn8q5" path="res://Assets/Audio/General/MonsterAttack.mp3" id="10_ukxih"]
 
 [sub_resource type="Gradient" id="Gradient_qujjh"]
 colors = PackedColorArray(0, 0.109804, 0.278431, 1, 0, 0.0470588, 0.121569, 1)
@@ -185,7 +186,7 @@ offset_bottom = 328.0
 texture = SubResource("GradientTexture2D_a1cs2")
 
 [node name="Creature" parent="." instance=ExtResource("1_2i86a")]
-position = Vector2(440, -40)
+position = Vector2(968, -1112)
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 329)
@@ -257,4 +258,8 @@ spawn_to_node = NodePath(".")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_u4pel")
 volume_db = -35.0
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ukxih")
 autoplay = true

@@ -48,4 +48,5 @@ func shoot():
 	add_sibling(bullet)
 	bullet.global_position = bullet_position.global_position
 	bullet.shoot(rotation)
+	$Audio.play()
 	cooldown_timer.start()

@@ -20,16 +20,16 @@ position = Vector2(0.5, 7)
 shape = SubResource("RectangleShape2D_15m07")
 
 [node name="Gun" parent="." instance=ExtResource("2_4nkme")]
-position = Vector2(-25.5, -38)
+position = Vector2(-29, -41)
 speed_degrees = 90.0
 
 [node name="Gun2" parent="." instance=ExtResource("2_4nkme")]
-position = Vector2(-48.5, 14)
+position = Vector2(-52, 11)
 max_angle_degrees = -90.0
 speed_degrees = 90.0
 
 [node name="Gun3" parent="." instance=ExtResource("2_4nkme")]
-position = Vector2(48.5, -20)
+position = Vector2(45, -23)
 min_angle_degrees = -90.0
 speed_degrees = 90.0
 
