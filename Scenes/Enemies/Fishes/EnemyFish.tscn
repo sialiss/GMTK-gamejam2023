@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://lpmu3p1la7d1" path="res://Assets/Textures/XenoLife/shark.png" id="2_7a2gi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgkqy"]
-radius = 11.0
-height = 56.0
+radius = 27.0
+height = 70.0
 
 [sub_resource type="Animation" id="Animation_t6824"]
 resource_name = "swim"
@@ -42,6 +42,8 @@ script = ExtResource("1_lraru")
 health = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.25, 2.5)
 texture = ExtResource("2_7a2gi")
 hframes = 2
 
@@ -65,4 +67,5 @@ position = Vector2(-4.5, -3)
 shape = SubResource("CircleShape2D_2isbf")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(1.25, 2.5)
 occluder = SubResource("OccluderPolygon2D_y6d4m")

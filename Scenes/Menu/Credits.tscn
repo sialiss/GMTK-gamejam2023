@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://lpmu3p1la7d1" path="res://Assets/Textures/XenoLife/shark.png" id="1_pkuex"]
 [ext_resource type="Script" path="res://Scenes/Menu/Credits.gd" id="1_y0af7"]
-[ext_resource type="Texture2D" path="res://Assets/Textures/XenoLife/jellyfish.png" id="2_bdkuh"]
+[ext_resource type="Texture2D" uid="uid://bqgmbh33tubmj" path="res://Assets/Textures/XenoLife/jellyfish.png" id="2_bdkuh"]
 
 [sub_resource type="Gradient" id="Gradient_ofpt1"]
 colors = PackedColorArray(0, 0, 0.207843, 1, 0, 0.192157, 0.301961, 1)
@@ -68,6 +68,7 @@ _data = {
 }
 
 [sub_resource type="SystemFont" id="SystemFont_of2dw"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o7l3"]
 
