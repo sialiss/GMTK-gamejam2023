@@ -1,8 +1,9 @@
 class_name FishSpawn extends Node2D
 
-@export var fish = Resource
+@export var fish: PackedScene
+@export var max_fish = 1
 
-@export var spawn_to_node: Node
+@onready var spawn_to_node = $Fishes
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,6 +12,9 @@ func _ready():
 
 
 func _on_FishTimer_timeout():
+	if spawn_to_node.get_child_count() >= max_fish:
+		return
+
 	# Create a new instance of the Mob scene.
 	# var mob = mob_scenes[randi() % mob_scenes.size()].instance()
 	var mob = fish.instantiate()
