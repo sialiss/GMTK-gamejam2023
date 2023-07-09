@@ -27,10 +27,8 @@ func set_location(location: Node2D):
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	linear_velocity = velocity.rotated(direction)
 
-
 func set_spawn(spawner_node: FishSpawn):
 	self.spawner_node = spawner_node
-
 
 func _physics_process(delta):
 	var target_position
@@ -47,8 +45,6 @@ func _physics_process(delta):
 	# Move
 	linear_velocity = linear_velocity.move_toward(input * speed, acceleration * delta)
 
-
-
 func _process(delta):
 	pass
 
@@ -58,6 +54,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func die():
 	$CollisionShape2D.set_deferred("disabled", true)
-	#var tween = create_tween()
-	#tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
-	#tween.tween_callback(Callable(self, "queue_free"))
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	tween.tween_callback(Callable(self, "queue_free"))

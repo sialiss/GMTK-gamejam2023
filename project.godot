@@ -13,7 +13,7 @@ config_version=5
 config/name="Dipsi creature"
 run/main_scene="res://Scenes/Sea/Sea.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon2.svg"
 
 [autoload]
 

@@ -11,5 +11,4 @@ func harm(taken_damage: float):
 		die()
 
 func die():
-	#queue_free()
-	pass
+	queue_free()
