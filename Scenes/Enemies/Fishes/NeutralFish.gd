@@ -27,3 +27,11 @@ func _physics_process(delta):
 	# constant_torque = old_rotation.angle_to(target_rotation) * 1000
 
 	$Sprite2D.look_at(global_position + linear_velocity)
+
+
+func get_upgrade(body):
+	body.max_health = clamp(body.max_health + 1, 0, 100)
+	body.update_health(body.health + 1)
+
+	body.speed = clamp(body.speed + 2, 0, 400)
+	body.acceleration = clamp(body.acceleration + 2, 0, 400)

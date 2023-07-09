@@ -43,6 +43,8 @@ func receive_damage(body):
 	health -= damage
 	if health <= 0:
 		die()
+		if body.has_method("upgrade"):
+			body.upgrade(self.get_upgrade)
 
 	if damage > 0 and body.has_method("on_dealt_damage"):
 		body.on_dealt_damage()
@@ -52,3 +54,7 @@ func die():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
 	tween.tween_callback(Callable(self, "queue_free"))
+
+
+func get_upgrade(body):
+	pass
