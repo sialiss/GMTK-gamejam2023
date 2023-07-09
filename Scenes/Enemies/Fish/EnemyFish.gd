@@ -48,9 +48,15 @@ func _physics_process(delta):
 func _process(delta):
 	pass
 
-func _on_VisibilityNotifier2D_screen_exited():
-	#queue_free()
-	pass
+# Called when touched an enemy
+func receive_damage(body):
+	var damage = body.get_damage()
+	health -= damage
+	if health <= 0:
+		die()
+
+	if damage > 0 and body.has_method("on_dealt_damage"):
+		body.on_dealt_damage()
 
 func die():
 	$CollisionShape2D.set_deferred("disabled", true)
