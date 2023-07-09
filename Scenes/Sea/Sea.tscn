@@ -501,10 +501,12 @@ rotation = 0.533621
 position = Vector2(-80.0967, -78.4975)
 rotation = 0.102991
 fish = ExtResource("8_ffmkx")
+max_fish = 100
 
 [node name="FishSpawn" parent="." instance=ExtResource("3_m44fu")]
-position = Vector2(1840, -1168)
+position = Vector2(1221, -602)
 fish = ExtResource("8_cby4j")
+max_fish = 5
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_u4pel")
