@@ -9,11 +9,12 @@ class_name Creature extends CharacterBody2D
 
 @onready var health = max_health
 @onready var attack_tentacle_position = $AttackTentaclePosition
+@onready var bars = $Bars
 @onready var tentacles = $Tentacles.get_children()
 
 
 func _ready():
-	update_health(0)
+	update_health(20)
 
 
 func _physics_process(delta):
@@ -44,6 +45,7 @@ func _physics_process(delta):
 
 func upgrade(upgrade_func: Callable):
 	upgrade_func.call(self)
+	update_bars()
 
 
 # Called when touched an enemy
@@ -64,7 +66,13 @@ func die():
 
 func update_health(new_health: float):
 	health = clamp(new_health, 0, max_health)
-	$Health/HP.text = "%d/%d" % [health, max_health]
+	update_bars()
+
+
+func update_bars():
+	bars.get_node("%Health").value = health
+	bars.get_node("%Speed").value = speed
+	bars.get_node("%Attack").value = attack_distance
 
 
 func _on_area_2d_body_entered(body):

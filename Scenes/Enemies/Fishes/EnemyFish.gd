@@ -1,4 +1,7 @@
-extends Fish
+class_name EnemyFish extends Fish
+
+
+@onready var attack_cooldown = $AttackCooldown
 
 
 var target_position = Vector2.ZERO
@@ -16,6 +19,21 @@ func _physics_process(delta):
 	# Move
 	constant_force = input * speed
 	$Sprite2D.look_at(global_position + linear_velocity)
+
+	# Damage
+	if attack_cooldown.is_stopped():
+		for collider in get_colliding_bodies():
+			if collider.has_method("receive_damage") and not (collider is EnemyFish):
+				collider.receive_damage(self)
+	
+	
+func get_damage():
+	return damage
+
+
+func on_dealt_damage():
+	attack_cooldown.start()
+
 
 func get_upgrade(body):
 	body.update_health(body.health + 2)
