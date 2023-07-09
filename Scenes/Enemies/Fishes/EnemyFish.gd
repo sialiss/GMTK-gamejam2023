@@ -25,8 +25,8 @@ func _physics_process(delta):
 		for collider in get_colliding_bodies():
 			if collider.has_method("receive_damage") and not (collider is EnemyFish):
 				collider.receive_damage(self)
-	
-	
+
+
 func get_damage():
 	return damage
 
